@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>لعبة معلومات عامة</title>
+  <title>لعبتي الأولى</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ربط ملف التنسيق -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- ربط ملف المانيفست (يجب أن يكون داخل docs) -->
   <link rel="manifest" href="manifest.json">
+
+  <!-- أيقونة التطبيق -->
+  <link rel="icon" href="icon.png">
+
 </head>
 <body>
-
-  <h1>لعبة معلومات عامة</h1>
+  <h1>مرحبًا بك في لعبتي الأولى</h1>
   <button id="startBtn">ابدأ</button>
 
   <div id="modelSelector" style="display:none;">
@@ -18,12 +26,7 @@
 
   <div id="quizContainer" style="display:none;"></div>
 
-  <!-- تحميل السكربت مع إضافة ?v=2 لتحديث النسخة -->
-  <script src="script.js?v=2"></script>
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js");
-    }
-  </script>
+  <!-- ربط ملف السكربت -->
+  <script src="script.js"></script>
 </body>
 </html>
