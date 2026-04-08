@@ -121,4 +121,5 @@ function checkAnswer(selected) {
       `;
     }
   }, 1500);
-  }
+  } 
+alert("تم تحميل السكربت بنجاح!");
