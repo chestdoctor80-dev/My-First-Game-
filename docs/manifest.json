@@ -1,6 +1,7 @@
 {
   "name": "معلومات عامة ممتعة ومتنوعة",
   "short_name": "معلومات",
+  "id": "com.chestdoctor.quizgame",
   "description": "لعبة معلومات عامة ممتعة ومتنوعة",
   "start_url": "index.html",
   "display": "standalone",
@@ -11,13 +12,25 @@
   "dir": "rtl",
   "icons": [
     {
-      "src": "icon.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icon.png",
+      "src": "icon-512.png",
       "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshot1.png",
+      "sizes": "540x720",
+      "type": "image/png"
+    },
+    {
+      "src": "screenshot2.png",
+      "sizes": "540x720",
       "type": "image/png"
     }
   ]
