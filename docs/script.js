@@ -120,6 +120,7 @@ function checkAnswer(selected) {
         <button onclick="showModels()">اختر نموذج آخر</button>
       `;
     }
-  }, 1500);
-  } 
-alert("تم تحميل السكربت بنجاح!");
+}, 1500);
+}
+
+alert("تم تحميل السكربت بنجاح!"); 
