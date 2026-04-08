@@ -1,0 +1,21 @@
+`json
+{
+  "name": "لعبة معلومات عامة",
+  "short_name": "معلومات",
+  "description": "لعبة معلومات عامة ممتعة ومتنوعة",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#a678d8",
+  "theme_color": "#a678d8",
+  "orientation": "portrait",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
+`
