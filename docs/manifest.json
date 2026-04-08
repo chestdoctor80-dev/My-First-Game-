@@ -1,8 +1,8 @@
 {
-  "name": "لعبة معلومات عامة",
+  "name": "معلومات عامة ممتعة ومتنوعة",
   "short_name": "معلومات",
   "description": "لعبة معلومات عامة ممتعة ومتنوعة",
-  "start_url": "./index.html",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#a678d8",
   "theme_color": "#a678d8",
