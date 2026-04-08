@@ -5,6 +5,7 @@
   <title>معلومات عامة ممتعة ومتنوعة</title>
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#a678d8">
 </head>
 <body>
 
@@ -21,18 +22,10 @@
   <script src="script.js"></script>
   <script>
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js");
+      navigator.serviceWorker.register("sw.js")
+        .then(() => console.log("Service Worker مسجل"))
+        .catch(err => console.error("خطأ في التسجيل:", err));
     }
   </script>
 </body>
 </html>
-<head>
-  <meta charset="utf-8">
-  <title>لعبة معلومات</title>
-  <link rel="manifest" href="manifest.json">
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js");
-    }
-  </script>
-</head>
