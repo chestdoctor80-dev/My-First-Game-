@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(to bottom, #a678d8, #d8b7ff); /* بنفسجي فاتح بلمعة */
+  background: linear-gradient(to bottom, #a678d8, #d8b7ff);
   font-family: Tahoma, Arial, sans-serif;
   text-align: center;
   direction: rtl;
@@ -76,20 +76,22 @@ h1 {
   font-weight: bold;
 }
 
-.correct {
-  color: #008000;
-  font-weight: bold;
-  font-size: clamp(20px, 4vw, 32px);
-}
-
-.wrong {
-  color: #b30000;
-  font-weight: bold;
-  font-size: clamp(20px, 4vw, 32px);
-}
-
 #models {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* تحسين الاستجابة للشاشات الصغيرة */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 24px;
+  }
+  .question {
+    font-size: 20px;
+  }
+  .option, .modelBtn, #startBtn {
+    font-size: 18px;
+    padding: 12px;
+  }
 }
