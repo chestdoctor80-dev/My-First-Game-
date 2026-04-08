@@ -59,7 +59,6 @@ const models = [
     {question:"أول من اخترع البطارية؟", options:["فولت","أديسون","بيل","تسلا"], answer:0}, // اختراعات
      {question:"أكبر دولة في غرب أفريقيا؟", options:["نيجيريا","غانا","السنغال","مالي"], answer:0},
 ];
-
 let currentQuestion = 0;
 let score = 0;
 let wrong = 0;
@@ -122,4 +121,4 @@ function checkAnswer(selected) {
       `;
     }
   }, 1500);
-}
+  }
