@@ -59,68 +59,67 @@ const models = [
     {question:"أول من اخترع البطارية؟", options:["فولت","أديسون","بيل","تسلا"], answer:0}, // اختراعات
     {question:"أكبر دولة في غرب أفريقيا؟", options:["نيجيريا","غانا","السنغال","مالي"], answer:0}
 ];
-let currentQuestion = 0;
-let score = 0;
-let wrong = 0;
-let currentModel = 0;
+// عناصر الصفحة
+const startBtn = document.getElementById("startBtn");
+const modelSelector = document.getElementById("modelSelector");
+const modelsDiv = document.getElementById("models");
+const quizContainer = document.getElementById("quizContainer");
 
-document.getElementById("startBtn").addEventListener("click", showModels);
+// إظهار النماذج عند الضغط على زر ابدأ
+startBtn.addEventListener("click", () => {
+  startBtn.style.display = "none";
+  modelSelector.style.display = "block";
+  showModels();
+});
 
+// عرض أزرار النماذج
 function showModels() {
-  document.getElementById("startBtn").style.display = "none";
-  document.getElementById("modelSelector").style.display = "block";
-  let modelsDiv = document.getElementById("models");
   modelsDiv.innerHTML = "";
-  for (let i = 0; i < models.length; i++) {
-    modelsDiv.innerHTML += `<button class="modelBtn" onclick="startQuiz(${i})">النموذج ${i+1}</button>`;
-  }
+  models.forEach((m, i) => {
+    const btn = document.createElement("button");
+    btn.textContent = "النموذج " + (i+1);
+    btn.addEventListener("click", () => startQuiz(i));
+    modelsDiv.appendChild(btn);
+  });
 }
 
+// بدء الاختبار
 function startQuiz(modelIndex) {
-  currentModel = modelIndex;
-  currentQuestion = 0;
-  score = 0;
-  wrong = 0;
-  document.getElementById("modelSelector").style.display = "none";
-  document.getElementById("quizContainer").style.display = "block";
+  modelSelector.style.display = "none";
+  quizContainer.style.display = "block";
+  let currentQuestion = 0;
+  let score = 0;
+
+  function showQuestion() {
+    quizContainer.innerHTML = "";
+    const q = models[modelIndex][currentQuestion];
+    const questionEl = document.createElement("h3");
+    questionEl.textContent = q.question;
+    quizContainer.appendChild(questionEl);
+
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement("button");
+      btn.textContent = opt;
+      btn.addEventListener("click", () => {
+        if (i === q.answer) {
+          score++;
+          alert("إجابة صحيحة!");
+        } else {
+          alert("إجابة خاطئة!");
+        }
+        currentQuestion++;
+        if (currentQuestion < models[modelIndex].length) {
+          showQuestion();
+        } else {
+          quizContainer.innerHTML = "<h2>انتهى الاختبار. نتيجتك: " + score + "/" + models[modelIndex].length + "</h2>";
+        }
+      });
+      quizContainer.appendChild(btn);
+    });
+  }
+
   showQuestion();
 }
 
-function showQuestion() {
-  let quizContainer = document.getElementById("quizContainer");
-  let q = models[currentModel][currentQuestion];
-  quizContainer.innerHTML = `
-    <div class="question">${q.question}</div>
-    ${q.options.map((opt, i) => 
-      `<button class="option" onclick="checkAnswer(${i})">${i+1}. ${opt}</button>`
-    ).join("")}
-    <div id="feedback"></div>
-  `;
-}
-
-function checkAnswer(selected) {
-  let q = models[currentModel][currentQuestion];
-  let feedback = document.getElementById("feedback");
-  if (selected === q.answer) {
-    score++;
-    feedback.innerHTML = `<p class="correct">إجابة صحيحة!</p>`;
-  } else {
-    wrong++;
-    feedback.innerHTML = `<p class="wrong">إجابة خاطئة! الصحيح هو: ${q.options[q.answer]}</p>`;
-  }
-  setTimeout(() => {
-    currentQuestion++;
-    if (currentQuestion < models[currentModel].length) {
-      showQuestion();
-    } else {
-      document.getElementById("quizContainer").innerHTML = `
-        <h2>انتهى النموذج!</h2>
-        <p class="result">إجابات صحيحة: ${score}</p>
-        <p class="result">إجابات خاطئة: ${wrong}</p>
-        <button onclick="showModels()">اختر نموذج آخر</button>
-      `;
-    }
-}, 1500);
-}
-
-alert("تم تحميل السكربت بنجاح!"); 
+// للتأكد أن السكربت يعمل
+alert("تم تحميل السكربت بنجاح!");
