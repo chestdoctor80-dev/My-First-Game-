@@ -61,6 +61,7 @@ const models = [
   ]
 ];
 
+
 // عناصر الصفحة
 const startBtn = document.getElementById("startBtn");
 const modelSelector = document.getElementById("modelSelector");
@@ -81,27 +82,49 @@ function showModels() {
     const btn = document.createElement("button");
     btn.textContent = "النموذج " + (i+1);
     btn.className = "modelBtn";
-    btn.addEventListener("click", ()// عناصر الصفحة
-const startBtn = document.getElementById("startBtn");
-const modelSelector = document.getElementById("modelSelector");
-const modelsDiv = document.getElementById("models");
-const quizContainer = document.getElementById("quizContainer");
-
-// إظهار النماذج عند الضغط على زر ابدأ
-startBtn.addEventListener("click", () => {
-  startBtn.style.display = "none";
-  modelSelector.style.display = "block";
-  showModels();
-});
-
-// عرض أزرار النماذج
-function showModels() {
-  modelsDiv.innerHTML = "";
-  models.forEach((m, i) => {
-    const btn = document.createElement("button");
-    btn.textContent = "النموذج " + (i+1);
-    btn.className = "modelBtn"; // ← هنا كان الخطأ
     btn.addEventListener("click", () => startQuiz(i));
     modelsDiv.appendChild(btn);
   });
+}
+
+// بدء الاختبار
+function startQuiz(modelIndex) {
+  modelSelector.style.display = "none";
+  quizContainer.style.display = "block";
+  let currentQuestion = 0;
+  let score = 0;
+
+  function showQuestion() {
+    quizContainer.innerHTML = "";
+    const q = models[modelIndex][currentQuestion];
+
+    const questionEl = document.createElement("h3");
+    questionEl.textContent = q.question;
+    questionEl.className = "question";
+    quizContainer.appendChild(questionEl);
+
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement("button");
+      btn.textContent = opt;
+      btn.className = "option";
+      btn.addEventListener("click", () => {
+        if (i === q.answer) {
+          score++;
+          alert("إجابة صحيحة!");
+        } else {
+          alert("إجابة خاطئة!");
+        }
+        currentQuestion++;
+        if (currentQuestion < models[modelIndex].length) {
+          showQuestion();
+        } else {
+          quizContainer.innerHTML = "<h2 class='result'>انتهى الاختبار. نتيجتك: " 
+            + score + "/" + models[modelIndex].length + "</h2>";
+        }
+      });
+      quizContainer.appendChild(btn);
+    });
+  }
+
+  showQuestion();
 }
