@@ -80,4 +80,8 @@ function showModels() {
   models.forEach((m, i) => {
     const btn = document.createElement("button");
     btn.textContent = "النموذج " + (i+1);
-    btn.className = "modelBtn
+    btn.className = "modelBtn"; // ← هنا كان الخطأ
+    btn.addEventListener("click", () => startQuiz(i));
+    modelsDiv.appendChild(btn);
+  });
+}
