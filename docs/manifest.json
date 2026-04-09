@@ -22,5 +22,6 @@
       "type": "image/png"
     }
   ],
-  "categories": ["education", "games"]
+  "categories": ["education", "games"],
+  "prefer_related_applications": false
 }
